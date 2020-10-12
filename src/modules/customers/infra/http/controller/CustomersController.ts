@@ -8,11 +8,11 @@ export default class CustomersController {
   public async create(request: Request, response: Response): Promise<Response> {
     const { name, email } = request.body;
 
-    // instanciar o servide + injecao de dependencias
+    // instanciar o service + injecao de dependencias
     const createCustomer = container.resolve(CreateCustomerService);
 
     // chamar um service que vai retornar um customer
-    const customer = createCustomer.execute({
+    const customer = await createCustomer.execute({
       name,
       email,
     });
